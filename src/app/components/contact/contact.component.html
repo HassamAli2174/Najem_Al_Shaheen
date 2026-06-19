@@ -1,0 +1,53 @@
+<section class="contact" id="contact">
+  <div class="container contact__grid">
+    <div class="contact__info">
+      <p class="eyebrow">Get In Touch</p>
+      <h2 class="contact__title">Tell us what's down.</h2>
+      <p class="contact__text">
+        Call directly for breakdowns and call-outs, or send the details below and we'll get back to you on WhatsApp.
+      </p>
+
+      <ul class="contact__list">
+        <li>
+          <span class="contact__label">Call</span>
+          <a href="tel:+971559199148">+971 55 919 9148</a>
+        </li>
+        <li>
+          <span class="contact__label">Call</span>
+          <a href="tel:+971521087576">+971 52 108 7576</a>
+        </li>
+        <li>
+          <span class="contact__label">Email</span>
+          <a href="mailto:najemalshaheen@gmail.com">najemalshaheen&#64;gmail.com</a>
+        </li>
+        <li>
+          <span class="contact__label">Based In</span>
+          <span>United Arab Emirates</span>
+        </li>
+      </ul>
+    </div>
+
+    <form class="contact__form" (ngSubmit)="submit()" #f="ngForm">
+      @if (!submitted()) {
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" [(ngModel)]="name" required placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" type="tel" name="phone" [(ngModel)]="phone" required placeholder="+971 5X XXX XXXX">
+        </div>
+        <div class="field">
+          <label for="message">What needs repair?</label>
+          <textarea id="message" name="message" [(ngModel)]="message" rows="4" required placeholder="e.g. 75kW motor rewinding, on-site generator overhaul..."></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary" [disabled]="f.invalid">Send via WhatsApp</button>
+      } @else {
+        <div class="field__success">
+          <p>Opening WhatsApp&hellip;</p>
+          <p class="field__success-sub">If it didn't open, call us directly at <a href="tel:+971559199148">+971 55 919 9148</a>.</p>
+        </div>
+      }
+    </form>
+  </div>
+</section>

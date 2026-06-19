@@ -1,0 +1,37 @@
+<section class="about" id="about">
+  <div class="container about__grid">
+    <div class="about__media" aria-hidden="true">
+      <div class="plate">
+        <span class="plate__row"><b>UNIT</b> Heavy Equipment</span>
+        <span class="plate__row"><b>VOLT</b> AC / DC</span>
+        <span class="plate__row"><b>SCOPE</b> Electrical &amp; Mechanical</span>
+        <span class="plate__row"><b>BASE</b> U.A.E.</span>
+      </div>
+    </div>
+
+    <div class="about__copy">
+      <p class="eyebrow">About the Workshop</p>
+      <h2 class="about__title">Hands-on repair, not guesswork.</h2>
+
+      <p class="about__text">
+        Najem Al Shaheen Repairing of Equipment works on the machines that keep facilities, sites and
+        fleets running &mdash; rewinding motors and alternators, overhauling generators, repairing PLCs and
+        control panels, and maintaining the chillers and AC systems that can't afford downtime.
+      </p>
+      <p class="about__text">
+        Beyond electrical repair, the shop handles fabrication and mechanical engineering work: lathe,
+        milling, drilling, grinding, hydraulic press, and welding &mdash; plus full overhaul and maintenance
+        of cranes, heavy trucks, concrete mixers and industrial equipment.
+      </p>
+
+      <dl class="about__stats">
+        @for (s of stats; track s.label) {
+          <div class="about__stat">
+            <dt>{{ s.value }}</dt>
+            <dd>{{ s.label }}</dd>
+          </div>
+        }
+      </dl>
+    </div>
+  </div>
+</section>

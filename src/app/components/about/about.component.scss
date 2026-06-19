@@ -1,0 +1,101 @@
+.about {
+  padding: 120px 0;
+  background: var(--c-panel);
+  border-top: 1px solid var(--c-line);
+  border-bottom: 1px solid var(--c-line);
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 64px;
+  align-items: center;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.about__media {
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 860px) { order: 2; }
+}
+
+// A riveted equipment nameplate motif — references the actual metal data-plates
+// bolted to every motor/generator this shop services.
+.plate {
+  width: 100%;
+  max-width: 320px;
+  background: linear-gradient(155deg, #232F3B, #161F28);
+  border: 1px solid var(--c-line);
+  border-radius: 4px;
+  padding: 28px 24px;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02), 0 30px 60px -20px rgba(0,0,0,0.5);
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #8a93a0, #3c4754);
+    top: 14px;
+  }
+  &::before { left: 14px; }
+  &::after { right: 14px; }
+
+  &__row {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 0.82rem;
+    color: var(--c-paper-dim);
+    padding: 9px 0;
+    border-bottom: 1px dashed rgba(174,184,194,0.18);
+    letter-spacing: 0.02em;
+
+    &:last-child { border-bottom: none; }
+
+    b {
+      color: var(--c-copper-lt);
+      margin-right: 10px;
+      font-weight: 500;
+    }
+  }
+}
+
+.about__title {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  margin: 18px 0 22px;
+  line-height: 1.15;
+}
+
+.about__text {
+  color: var(--c-paper-dim);
+  font-size: 1.02rem;
+  max-width: 600px;
+  margin-bottom: 16px;
+}
+
+.about__stats {
+  display: flex;
+  gap: 40px;
+  margin: 36px 0 0;
+  flex-wrap: wrap;
+}
+
+.about__stat {
+  dt {
+    font-family: var(--f-display);
+    font-size: 2rem;
+    color: var(--c-copper);
+  }
+  dd {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: var(--c-paper-dim);
+    max-width: 160px;
+  }
+}

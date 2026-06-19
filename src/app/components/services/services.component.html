@@ -1,0 +1,33 @@
+<section class="services" id="services">
+  <div class="container">
+    <p class="eyebrow">What We Service</p>
+    <h2 class="services__title">Three trades, one shop.</h2>
+    <p class="services__sub">
+      Electrical repair, fabrication and heavy-machinery overhaul &mdash; handled under one roof,
+      so equipment doesn't have to travel between specialists.
+    </p>
+
+    <div class="services__tabs" role="tablist">
+      @for (g of groups; track g.id) {
+        <button
+          class="tab"
+          role="tab"
+          [class.is-active]="activeGroup() === g.id"
+          [attr.aria-selected]="activeGroup() === g.id"
+          (click)="setActive(g.id)">
+          <span class="tab__code">{{ g.code }}</span>
+          {{ g.title }}
+        </button>
+      }
+    </div>
+
+    <ul class="services__list">
+      @for (item of activeItems; track item) {
+        <li class="services__item">
+          <span class="services__bullet" aria-hidden="true"></span>
+          {{ item }}
+        </li>
+      }
+    </ul>
+  </div>
+</section>

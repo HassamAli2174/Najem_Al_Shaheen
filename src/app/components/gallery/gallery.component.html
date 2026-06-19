@@ -1,0 +1,16 @@
+<section class="gallery" id="gallery">
+  <div class="container">
+    <p class="eyebrow">From The Shop Floor</p>
+    <h2 class="gallery__title">Real jobs, real equipment.</h2>
+    <p class="gallery__sub">A look at the rewinding, machining and panel work that goes out the door every week.</p>
+
+    <div class="gallery__grid">
+      @for (p of photos; track p.src) {
+        <figure class="gallery__item" [class.gallery__item--lg]="p.size === 'lg'">
+          <img [src]="p.src" [alt]="p.alt" loading="lazy">
+          <figcaption>{{ p.tag }}</figcaption>
+        </figure>
+      }
+    </div>
+  </div>
+</section>

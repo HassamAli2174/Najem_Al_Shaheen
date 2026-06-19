@@ -1,0 +1,135 @@
+// ============================================
+// NAJEM AL SHAHEEN — Design Tokens
+// Industrial / workshop-floor visual language
+// ============================================
+
+:root {
+  // Colors — drawn from the workshop: steel, copper winding wire, gunmetal
+  --c-ink:        #0D1117;   // near-black steel, primary bg
+  --c-panel:      #16202B;   // deep gunmetal blue, secondary bg
+  --c-panel-2:    #1E2C3A;   // lighter panel for cards
+  --c-copper:     #C77B3F;   // copper winding wire — primary accent
+  --c-copper-lt:  #E8A33D;   // bright copper / brazed-joint highlight
+  --c-paper:      #F5F3EA;   // worn manual paper — primary text on dark
+  --c-paper-dim:  #AEB8C2;   // secondary text, gunmetal-gray
+  --c-line:       #2A3947;   // hairline dividers
+  --c-safety:     #D9482B;   // safety-orange, used sparingly for emphasis
+
+  // Type
+  --f-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --f-body:    'IBM Plex Sans', -apple-system, sans-serif;
+  --f-mono:    'IBM Plex Mono', 'Courier New', monospace;
+
+  // Layout
+  --maxw: 1200px;
+  --pad: clamp(20px, 5vw, 64px);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--c-ink);
+  color: var(--c-paper);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--f-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--c-paper);
+}
+
+p { margin: 0; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--f-body);
+  cursor: pointer;
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-copper-lt);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &::before {
+    content: '';
+    width: 22px;
+    height: 2px;
+    background: var(--c-copper);
+    display: inline-block;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-copper-lt);
+  outline-offset: 3px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 14px 28px;
+  border-radius: 2px;
+  border: 1.5px solid transparent;
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+
+  &--primary {
+    background: var(--c-copper);
+    color: var(--c-ink);
+    border-color: var(--c-copper);
+
+    &:hover { background: var(--c-copper-lt); transform: translateY(-2px); }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--c-paper);
+    border-color: var(--c-line);
+
+    &:hover { border-color: var(--c-copper); color: var(--c-copper-lt); transform: translateY(-2px); }
+  }
+}

@@ -1,0 +1,117 @@
+.contact {
+  padding: 120px 0;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 64px;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.contact__title {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  margin: 18px 0 16px;
+}
+
+.contact__text {
+  color: var(--c-paper-dim);
+  max-width: 420px;
+  margin-bottom: 36px;
+}
+
+.contact__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  a, span:not(.contact__label) {
+    font-family: var(--f-mono);
+    font-size: 1.05rem;
+    color: var(--c-paper);
+    transition: color 0.2s ease;
+  }
+  a:hover { color: var(--c-copper-lt); }
+}
+
+.contact__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-paper-dim);
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.contact__form {
+  background: var(--c-panel);
+  border: 1px solid var(--c-line);
+  border-radius: 4px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 0.82rem;
+    color: var(--c-paper-dim);
+    font-weight: 500;
+  }
+
+  input, textarea {
+    background: var(--c-ink);
+    border: 1px solid var(--c-line);
+    border-radius: 2px;
+    padding: 13px 14px;
+    color: var(--c-paper);
+    font-family: var(--f-body);
+    font-size: 0.95rem;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+
+    &::placeholder { color: #5C6772; }
+    &:focus { border-color: var(--c-copper); outline: none; }
+  }
+}
+
+.contact__form .btn {
+  margin-top: 8px;
+  justify-content: center;
+
+  &:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+}
+
+.field__success {
+  text-align: center;
+  padding: 24px 0;
+
+  p { color: var(--c-paper); font-size: 1.05rem; }
+  .field__success-sub {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    color: var(--c-paper-dim);
+
+    a { color: var(--c-copper-lt); }
+  }
+}

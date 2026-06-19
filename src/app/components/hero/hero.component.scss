@@ -1,0 +1,207 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 140px 0 80px;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(199, 123, 63, 0.16), transparent 45%),
+    linear-gradient(180deg, var(--c-ink) 0%, #0A0E13 100%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--c-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--c-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    opacity: 0.18;
+    mask-image: linear-gradient(180deg, transparent, black 30%, black 70%, transparent);
+  }
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 48px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+}
+
+.hero__title {
+  font-size: clamp(2.4rem, 5.2vw, 4rem);
+  line-height: 1.05;
+  margin: 22px 0 24px;
+
+  .accent { color: var(--c-copper-lt); }
+}
+
+.hero__lede {
+  font-size: 1.08rem;
+  color: var(--c-paper-dim);
+  max-width: 540px;
+  margin-bottom: 36px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 32px;
+  margin: 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--c-line);
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  dt {
+    font-family: var(--f-mono);
+    color: var(--c-copper-lt);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  dd {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: var(--c-paper-dim);
+  }
+}
+
+// ---- Signature visual: animated rewinding diagram ----
+.hero__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    order: -1;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+.coil-svg {
+  width: 100%;
+  max-width: 420px;
+  filter: drop-shadow(0 0 40px rgba(199, 123, 63, 0.18));
+}
+
+.coil-ring {
+  fill: none;
+  stroke: var(--c-line);
+  stroke-width: 1.5;
+
+  &--core { stroke: rgba(174, 184, 194, 0.25); }
+}
+
+.coil-core {
+  fill: var(--c-panel-2);
+  stroke: var(--c-copper);
+  stroke-width: 2;
+}
+
+.coil-label {
+  font-family: var(--f-mono);
+  font-size: 15px;
+  fill: var(--c-paper-dim);
+  letter-spacing: 0.05em;
+}
+
+.windings .wind {
+  fill: none;
+  stroke: var(--c-copper);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: draw-wind 1.6s ease-out forwards;
+  opacity: 0.95;
+}
+
+// stagger each winding loop so it looks like it's being wound in sequence
+.wind--1 { animation-delay: 0.1s; }
+.wind--2 { animation-delay: 0.35s; }
+.wind--3 { animation-delay: 0.6s; }
+.wind--4 { animation-delay: 0.85s; }
+.wind--5 { stroke: var(--c-copper-lt); animation-delay: 1.05s; }
+.wind--6 { stroke: var(--c-copper-lt); animation-delay: 1.2s; }
+.wind--7 { stroke: var(--c-copper-lt); animation-delay: 1.35s; }
+.wind--8 { stroke: var(--c-copper-lt); animation-delay: 1.5s; }
+
+@keyframes draw-wind {
+  to { stroke-dashoffset: 0; }
+}
+
+.joint {
+  fill: var(--c-copper-lt);
+  animation: spark 1.8s ease-in-out infinite;
+  animation-delay: 1.8s;
+}
+.joint--d2 { animation-delay: 2.1s; }
+.joint--d3 { animation-delay: 2.4s; }
+.joint--d4 { animation-delay: 2.7s; }
+
+@keyframes spark {
+  0%, 100% { opacity: 0.4; r: 3; }
+  50% { opacity: 1; r: 5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .windings .wind {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+  .joint { animation: none; opacity: 0.9; }
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 36px;
+  border: 1.5px solid var(--c-line);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+
+  span {
+    width: 3px;
+    height: 8px;
+    background: var(--c-copper);
+    border-radius: 2px;
+    animation: scroll-dot 1.6s ease-in-out infinite;
+  }
+
+  @media (max-width: 700px) { display: none; }
+}
+
+@keyframes scroll-dot {
+  0% { opacity: 1; transform: translateY(0); }
+  60% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 0; transform: translateY(0); }
+}
